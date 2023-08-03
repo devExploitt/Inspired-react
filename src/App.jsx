@@ -12,7 +12,6 @@ const router = createBrowserRouter(
     <Route path='/' element={<Root />}>
       <Route index element={<MainPage />} />
       <Route path='catalog/:gender/:category?' element={<MainPage  />} />
-
       <Route path='*' element={<ErrorPage />} />
     </Route>
   )
