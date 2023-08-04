@@ -15,7 +15,6 @@ export const MainPage = () => {
     const genderData = categories[activeGender];
 
     const categoryData = genderData?.list.find((item) => item.slug === category);
-    console.log('categoryData: ', categoryData);
 
     useEffect(() => {
         if (gender) {
@@ -41,7 +40,7 @@ export const MainPage = () => {
 
     return (
         <>
-            <Banner data={genderData?.banner} />
+            {!category && <Banner data={genderData?.banner} />}
             <Goods categoryData={categoryData} />
         </>
     );

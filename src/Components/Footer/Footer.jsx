@@ -7,8 +7,6 @@ import { useSelector } from 'react-redux';
 
 export const Footer = () => {
     const { genderList , categories } = useSelector(state => state.navigation);
-    console.log('categories: ', categories);
-    console.log('genderList: ', genderList);
 
     return (
         <footer>
