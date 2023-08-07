@@ -5,7 +5,7 @@ export const fetchGender = createAsyncThunk(
     'goods/fetchGender',
     async (gender) => {
         const url = new URL(GOODS_URL);
-        url.searchParams.append('gender', gender)
+        url.searchParams.append('gender', gender);
         const response = await fetch(url);
         return await response.json();
     }
@@ -16,7 +16,7 @@ export const fetchCategory = createAsyncThunk(
     async (param) => {
         const url = new URL(GOODS_URL);
         for (const key in param) {
-            url.searchParams.append(key, param[key])
+            url.searchParams.append(key, param[key]);
         }
         const response = await fetch(url);
         return await response.json();
@@ -33,6 +33,11 @@ const goodsSlice = createSlice({
         pages: 0,
         totalCount: null,
     },
+    reducers: {
+        setPage: (state, action) => { // Removed the unnecessary semicolon here
+            state.page = action.payload;
+        },
+    },
     extraReducers: builder => {
         builder
             .addCase(fetchGender.pending, (state) => {
@@ -41,6 +46,8 @@ const goodsSlice = createSlice({
             .addCase(fetchGender.fulfilled, (state, action) => {
                 state.status = 'success';
                 state.goodsList = action.payload;
+                state.pages = 0; // Changed to 0, assuming it's the initial value for pages
+                state.totalCount = null; // Changed to null, assuming it's the initial value for totalCount
             })
             .addCase(fetchGender.rejected, (state, action) => {
                 state.status = 'failed';
@@ -52,7 +59,6 @@ const goodsSlice = createSlice({
             .addCase(fetchCategory.fulfilled, (state, action) => {
                 state.status = 'success';
                 state.goodsList = action.payload.goods;
-                state.page = action.payload.page;
                 state.pages = action.payload.pages;
                 state.totalCount = action.payload.totalCount;
             })

@@ -2,10 +2,8 @@ import { useSelector } from "react-redux";
 import s from './Goods.module.scss';
 import { Product } from '../Product/Product';
 import { Container } from "../Layout/Container/Container";
-export const Goods = ({ categoryData }) => {
+export const Goods = ({ title }) => {
     const { goodsList } = useSelector(state => state.goods);
-
-    const title = categoryData?.title ?? 'Новинки';
 
     return (
         <section className={s.goods}>
