@@ -34,7 +34,7 @@ const goodsSlice = createSlice({
         totalCount: null,
     },
     reducers: {
-        setPage: (state, action) => { // Removed the unnecessary semicolon here
+        setPage: (state, action) => {
             state.page = action.payload;
         },
     },
@@ -46,8 +46,8 @@ const goodsSlice = createSlice({
             .addCase(fetchGender.fulfilled, (state, action) => {
                 state.status = 'success';
                 state.goodsList = action.payload;
-                state.pages = 0; // Changed to 0, assuming it's the initial value for pages
-                state.totalCount = null; // Changed to null, assuming it's the initial value for totalCount
+                state.pages = 0;
+                state.totalCount = null;
             })
             .addCase(fetchGender.rejected, (state, action) => {
                 state.status = 'failed';
@@ -69,4 +69,5 @@ const goodsSlice = createSlice({
     },
 });
 
+export const { setPage } = goodsSlice.actions;
 export default goodsSlice.reducer;

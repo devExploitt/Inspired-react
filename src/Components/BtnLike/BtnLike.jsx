@@ -16,7 +16,8 @@ export const BtnLike = ({ id }) => {
         }
     }
     return (
-        <button
+        <>
+            <button
             className={isFavorite ? cn(s.like,s.active) : s.like}
             aria-label="Доавить в избранное"
             type='button'
@@ -24,5 +25,6 @@ export const BtnLike = ({ id }) => {
         >
             <LikeSVG />
         </button>
+        </>
     )
 }
