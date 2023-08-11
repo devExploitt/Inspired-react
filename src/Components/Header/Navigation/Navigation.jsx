@@ -7,6 +7,6 @@ export const Navigation = () => (
         <Container>
             <Gender />
             <Category />
-            </Container>
+        </Container>
     </nav>
 );

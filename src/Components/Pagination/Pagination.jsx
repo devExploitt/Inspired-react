@@ -1,13 +1,12 @@
 import { NavLink, useLocation } from 'react-router-dom'
 import s from './Pagintaion.module.scss'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
 export const Pagination = () => {
     const [pagePagination, setPagePagination] = useState('');
     const pathname = useLocation().pathname;
     const { page, pages } = useSelector(state => state.goods);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         setPagePagination(page)
@@ -31,7 +30,7 @@ export const Pagination = () => {
     const renderPaginationItems = () => {
         const paginationItems = [];
 
-        let startPage = (pagePagination === pages)  && (pages >=3)
+        let startPage = (pagePagination === pages) && (pages >= 3)
             ? pagePagination - 2 : Math.max(1, pagePagination - 1);
 
         let endPage = Math.min(startPage + 2, pages);

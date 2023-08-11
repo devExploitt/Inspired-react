@@ -20,8 +20,6 @@ export const ColorList = ({ colors, selectedColor, handleColorChange }) => {
             })}
         </div>
     ) : (
-
-
         <ul className={s.colorList}>
             {colors.map((id, i) => {
                 const color = colorList.find(color => color.id === id);
