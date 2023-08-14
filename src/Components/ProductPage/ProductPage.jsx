@@ -53,10 +53,10 @@ export const ProductPage = () => {
     }, [gender, category, id, dispatch]);
 
     useEffect(() => {
-        if (colorList.length && colors.length) {
-            setSelectedColor(colorList.find(color => color.id === colors[0]).title)
+        if (colorList?.length && colors?.length) {
+            setSelectedColor(colorList.find(color => color.id === colors[0]).title);
         }
-    }, [colorList, colors])
+    }, [colorList, colors]);
 
     return (
         <>
@@ -90,7 +90,7 @@ export const ProductPage = () => {
                         <div className={s.color}>
                             <p className={cn(s.subtitle, s.colorTitle)}>Цвет</p>
                             <ColorList
-                                colors={colors}
+                                colors={colors || []}
                                 selectedColor={selectedColor}
                                 handleColorChange={handleColorChange}
                             />
