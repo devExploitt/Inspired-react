@@ -4,12 +4,15 @@ import { Product } from '../Product/Product';
 import { Container } from "../Layout/Container/Container";
 import { Pagination } from "../Pagination/Pagination";
 export const Goods = ({ title }) => {
-    const { goodsList } = useSelector(state => state.goods);
+    const { goodsList, totalCount } = useSelector(state => state.goods);
 
     return (
         <section className={s.goods}>
             <Container>
-                <h2 className={s.title}>{title}</h2>
+                <h2 className={s.title}>
+                    {title ?? "Новинки"}
+                    {totalCount && totalCount > 0 ? <sup>&nbsp;({totalCount})</sup> : ''}
+                </h2>
                 <ul className={s.list}>
                     {goodsList.map((item) => (
                         <li key={item.id}>
