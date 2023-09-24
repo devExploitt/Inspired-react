@@ -66,10 +66,6 @@ export const CartItem = ({ id, color, size, count, goodsList }) => {
                     handleCountChange(count + 1)
                 }}
             />
-
-
-
-
         </article>
     )
 }
